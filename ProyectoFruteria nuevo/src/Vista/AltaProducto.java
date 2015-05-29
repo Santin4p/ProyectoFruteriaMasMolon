@@ -46,6 +46,7 @@ public class AltaProducto extends JPanel {
 	private Inventario inv;
 	private JTextArea textAreaDescripcion;
 	private JScrollPane scrollPane;
+	private BuscarArticulo findart;
 
 	/**
 	 * Create the panel.
@@ -151,9 +152,14 @@ public class AltaProducto extends JPanel {
 					try {
 						Articulo art = new Articulo(txtCodigoProducto.getText(), txtNombreProducto.getText(),
 								textAreaDescripcion.getText(), Double.parseDouble(txtPrecioProducto.getText()));
+						
 						if (inv.guardarArticulo(art)) {
 							JOptionPane.showMessageDialog(null, "Articulo dado de alta correctamente!", "Correcto",
 									JOptionPane.INFORMATION_MESSAGE);
+							txtCodigoProducto.setText("");
+							txtNombreProducto.setText("");
+							txtPrecioProducto.setText("");
+							textAreaDescripcion.setText("");
 						} else
 							JOptionPane.showMessageDialog(null, "Ha ocurrido un error!!", "Incorrecto",
 									JOptionPane.ERROR_MESSAGE);

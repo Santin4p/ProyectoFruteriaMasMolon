@@ -50,7 +50,7 @@ public class BuscarArticulo extends JPanel {
 	private JLabel lblPVP;
 	private JLabel lblCodigo;
 	private JTextField txtCodigo;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	private Inventario inv;
 	private Articulo art;
 	private JScrollPane scrollPane;
@@ -109,7 +109,7 @@ public class BuscarArticulo extends JPanel {
 		panel_1.add(txtCodigo, gbc_txtCodigo);
 		txtCodigo.setColumns(10);
 
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setMaximumSize(new Dimension(1555, 1555));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -135,7 +135,7 @@ public class BuscarArticulo extends JPanel {
 
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Seleccione un c\u00F3digo" }));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Seleccione un c\u00F3digo" }));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -224,8 +224,7 @@ public class BuscarArticulo extends JPanel {
 		btnBuscarProducto = new JButton("Buscar producto");
 		btnBuscarProducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Articulo art = new Articulo();
-
+				art = new Articulo();
 				try {
 					art = inv.buscarArticulo(txtCodigo.getText());
 					textAreaDescripcion.setText(art.getDescripcion());
@@ -249,12 +248,9 @@ public class BuscarArticulo extends JPanel {
 		gbc_btnBuscarProducto.gridx = 2;
 		gbc_btnBuscarProducto.gridy = 6;
 		panel_1.add(btnBuscarProducto, gbc_btnBuscarProducto);
-		cargarComboBOX();
-
 	}
 
 	public void cargarComboBOX() {
-
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
 			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
 

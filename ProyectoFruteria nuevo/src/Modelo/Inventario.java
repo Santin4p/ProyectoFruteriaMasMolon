@@ -42,7 +42,6 @@ public class Inventario implements Serializable {
 				oospers = new MiObjectPersonalizado(new FileOutputStream(articulo, true));
 				objetoLectura = new ObjectInputStream(new FileInputStream(articulo));
 				listaArticulos = leerObjToArray();
-
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

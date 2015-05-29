@@ -129,16 +129,6 @@ public class FrameGlobal extends JFrame {
 		mntmBuscarCliente = new JMenuItem("Buscar cliente");
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					try {
-						ventanaBuscar.cargarComboBox();
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
 				carta.show(contentPanel,"ventana2");
 				setResizable(true);
 			}
@@ -158,13 +148,16 @@ public class FrameGlobal extends JFrame {
 		mnTendero.add(mntmDarDeAltaArticulo);
 		
 		mntmBuscarArticulo = new JMenuItem("Buscar articulo");
+		mnTendero.add(mntmBuscarArticulo);
 		mntmBuscarArticulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				carta.show(contentPanel,"ventana5");
 				setResizable(true);
+				ventanaBuscarArticulo.cargarComboBOX();
+			
 			}
 		});
-		mnTendero.add(mntmBuscarArticulo);
+		
 		
 		mnFrutero = new JMenu("Frutero");
 		menuBar.add(mnFrutero);
