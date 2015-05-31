@@ -16,6 +16,12 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+
+
+
+import Test.VentanaPruebas;
+import Controlador.ListarClientes;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
@@ -30,6 +36,7 @@ public class FrameGlobal extends JFrame {
 	private JPBuscarCliente ventanaBuscar;
 	private JPModificarCliente ventanaModificar;
 	private AltaProducto ventanaAltaProducto;
+	private PanelFrutero ventanaFrutero;
 	private BuscarArticulo ventanaBuscarArticulo;
 	CardLayout carta;
 	private JPanel panel;
@@ -37,7 +44,6 @@ public class FrameGlobal extends JFrame {
 	private JMenu mnTendero;
 	private JMenu mnFrutero;
 	private JMenuItem mntmCrearPedido;
-	private JMenuItem mntmNuevaLineaPedido;
 	private JMenuItem mntmDarDeAltaArticulo;
 	private JMenuItem mntmBuscarArticulo;
 	private JMenuItem mntmDarDeAlta;
@@ -74,7 +80,7 @@ public class FrameGlobal extends JFrame {
 		carta=new CardLayout(0, 0);
 		contentPanel.setLayout(carta);
 		contenedorImagen=new JPanel();
-		contenedorImagen.setLayout(carta);
+		contenedorImagen.setLayout(null);
 		
 		Imagen nueva=new Imagen();
 		nueva.setBounds(0, 0, 594, 400);
@@ -96,6 +102,9 @@ public class FrameGlobal extends JFrame {
 		
 		ventanaBuscarArticulo=new BuscarArticulo();
 		contentPanel.add(ventanaBuscarArticulo,"ventana5");
+		
+		ventanaFrutero=new PanelFrutero();
+		contentPanel.add(ventanaFrutero,"ventana6");
 		
 		//Tamaño
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,16 +138,6 @@ public class FrameGlobal extends JFrame {
 		mntmBuscarCliente = new JMenuItem("Buscar cliente");
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					try {
-						ventanaBuscar.cargarComboBox();
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
 				carta.show(contentPanel,"ventana2");
 				setResizable(true);
 			}
@@ -170,9 +169,12 @@ public class FrameGlobal extends JFrame {
 		menuBar.add(mnFrutero);
 		
 		mntmCrearPedido = new JMenuItem("Crear pedido");
+		mntmCrearPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				carta.show(contentPanel, "ventana6");
+				setResizable(true);
+			}
+		});
 		mnFrutero.add(mntmCrearPedido);
-		
-		mntmNuevaLineaPedido = new JMenuItem("Nueva linea pedido");
-		mnFrutero.add(mntmNuevaLineaPedido);
 	}
 }

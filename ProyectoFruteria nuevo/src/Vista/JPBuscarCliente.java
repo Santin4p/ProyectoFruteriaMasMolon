@@ -155,7 +155,6 @@ public class JPBuscarCliente extends JPanel{
 	}
 	public void cargarComboBox() throws ClassNotFoundException, IOException{
 		for (int i = 0; i < listica.getListaCliente().size(); i++) {
-			listica.cargarClientes();
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
 	}

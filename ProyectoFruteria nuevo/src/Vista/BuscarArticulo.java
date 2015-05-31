@@ -225,7 +225,6 @@ public class BuscarArticulo extends JPanel {
 		btnBuscarProducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Articulo art = new Articulo();
-
 				try {
 					art = inv.buscarArticulo(txtCodigo.getText());
 					textAreaDescripcion.setText(art.getDescripcion());
@@ -237,9 +236,7 @@ public class BuscarArticulo extends JPanel {
 					JOptionPane.showMessageDialog(null, "El articulo no ha sido encontrado", "Lo siento",
 							JOptionPane.ERROR_MESSAGE);
 				}
-
 			}
-
 		});
 		btnBuscarProducto.setFont(new Font("MV Boli", Font.BOLD, 12));
 		GridBagConstraints gbc_btnBuscarProducto = new GridBagConstraints();
@@ -252,12 +249,9 @@ public class BuscarArticulo extends JPanel {
 		cargarComboBOX();
 
 	}
-
 	public void cargarComboBOX() {
-
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
 			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
-
 		}
 	}
 }

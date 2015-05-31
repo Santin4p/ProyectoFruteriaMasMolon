@@ -10,10 +10,11 @@ import javax.swing.border.EmptyBorder;
 
 import Vista.JPBuscarCliente;
 import Vista.JPDarDeAlta;
+import Vista.PanelFrutero;
 
 public class JPBuscarClientePrueba extends JFrame {
 
-	private JPBuscarCliente contentPane;
+	private PanelFrutero contentPane;
 
 	/**
 	 * Launch the application.
@@ -38,7 +39,7 @@ public class JPBuscarClientePrueba extends JFrame {
 	public JPBuscarClientePrueba() throws ClassNotFoundException, IOException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPBuscarCliente();
+		contentPane = new PanelFrutero();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 	}	
