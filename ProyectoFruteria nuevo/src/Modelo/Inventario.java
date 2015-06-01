@@ -24,7 +24,7 @@ public class Inventario implements Serializable {
 
 	public Inventario() {
 		listaArticulos = new ArrayList<Articulo>();
-		articulo = new File("articulos.obj");
+		articulo = new File("articulos.dat");
 		if (!articulo.exists()) {
 			try {
 				objetoEscritura = new ObjectOutputStream(new FileOutputStream(articulo));

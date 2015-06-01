@@ -152,19 +152,19 @@ public class AltaProducto extends JPanel {
 					try {
 						Articulo art = new Articulo(txtCodigoProducto.getText(), txtNombreProducto.getText(),
 								textAreaDescripcion.getText(), Double.parseDouble(txtPrecioProducto.getText()));
-						
+
 						if (inv.guardarArticulo(art)) {
-							JOptionPane.showMessageDialog(null, "Articulo dado de alta correctamente!", "Correcto",
+							JOptionPane.showMessageDialog(null, "Articulo dado de alta correctamente.", "Correcto",
 									JOptionPane.INFORMATION_MESSAGE);
 							txtCodigoProducto.setText("");
 							txtNombreProducto.setText("");
 							txtPrecioProducto.setText("");
 							textAreaDescripcion.setText("");
 						} else
-							JOptionPane.showMessageDialog(null, "Ha ocurrido un error!!", "Incorrecto",
+							JOptionPane.showMessageDialog(null, "Articulo ya existente", "Incorrecto",
 									JOptionPane.ERROR_MESSAGE);
 					} catch (NumberFormatException e) {
-						JOptionPane.showMessageDialog(null, "El precio indicado no es correcto!", "Incorrecto",
+						JOptionPane.showMessageDialog(null, "El precio indicado no es correcto.", "Incorrecto",
 								JOptionPane.ERROR_MESSAGE);
 						txtPrecioProducto.setText("");
 					}
@@ -196,16 +196,12 @@ public class AltaProducto extends JPanel {
 	}
 
 	public boolean comprobarCeldasVacias() {
-		String codigo, nombre, descripcion;
-		codigo = txtCodigoProducto.getText().trim();
-		txtCodigoProducto.setText(codigo);
-		nombre = txtNombreProducto.getText().trim();
-		txtNombreProducto.setText(nombre);
-		descripcion = textAreaDescripcion.getText().trim();
-		textAreaDescripcion.setText(descripcion);
+		txtCodigoProducto.setText(txtCodigoProducto.getText().trim());
+		txtNombreProducto.setText(txtNombreProducto.getText().trim());
+		textAreaDescripcion.setText(textAreaDescripcion.getText().trim());
 		if (txtCodigoProducto.getText().isEmpty() || txtNombreProducto.getText().isEmpty()
 				|| textAreaDescripcion.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(null, "Campo de texto vacío", "Incorrecto", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Campo de texto vacío.", "Incorrecto", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
