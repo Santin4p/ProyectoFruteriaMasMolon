@@ -46,23 +46,26 @@ public class JPBuscarCliente extends JPanel{
 	 * @throws ClassNotFoundException 
 	 */
 	public JPBuscarCliente() throws ClassNotFoundException, IOException {
-		listica=new ListarClientes();
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{35, 55, 97, 97, 107, 39, 0};
 		gridBagLayout.rowHeights = new int[]{35, 11, 52, 52, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
 		comboBox = new JComboBox();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				for (int i = 0; i < listica.getListaCliente().size(); i++) {
-					if (comboBox.getSelectedItem().equals(listica.getListaCliente().get(i).getNombre())) {
-						txtNombre.setText(listica.getListaCliente().get(i).getNombre());
-						txtApellidos.setText(listica.getListaCliente().get(i).getApellidos());
-						txtDNI.setText(listica.getListaCliente().get(i).getDNI());
-						txtColorPelo.setText(listica.getListaCliente().get(i).getColorDePelo());
+					try {
+						if (comboBox.getSelectedItem().equals(listica.getListaCliente().get(i).getNombre())) {
+							txtNombre.setText(listica.getListaCliente().get(i).getNombre());
+							txtApellidos.setText(listica.getListaCliente().get(i).getApellidos());
+							txtDNI.setText(listica.getListaCliente().get(i).getDNI());
+							txtColorPelo.setText(listica.getListaCliente().get(i).getColorDePelo());
+						}
+					} catch (NullPointerException e) {
+						// TODO: handle exception
 					}
 				}
 			}
@@ -151,11 +154,15 @@ public class JPBuscarCliente extends JPanel{
 		gbc_txtColorPelo.gridy = 3;
 		add(txtColorPelo, gbc_txtColorPelo);
 		txtColorPelo.setColumns(10);
-		cargarComboBox();
+		
 	}
 	public void cargarComboBox() throws ClassNotFoundException, IOException{
+		listica=new ListarClientes();
 		for (int i = 0; i < listica.getListaCliente().size(); i++) {
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
+	}
+	public void borrarComboBox(){
+		comboBox.removeAllItems();
 	}
 }

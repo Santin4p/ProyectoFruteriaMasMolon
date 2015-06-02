@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 
 
 
+
 import Test.VentanaPruebas;
 import Controlador.ListarClientes;
 
@@ -36,7 +37,7 @@ public class FrameGlobal extends JFrame {
 	private JPBuscarCliente ventanaBuscar;
 	private JPModificarCliente ventanaModificar;
 	private AltaProducto ventanaAltaProducto;
-	private PanelFrutero ventanaFrutero;
+	private PanelFruteroFinalDosPanel ventanaFrutero;
 	private BuscarArticulo ventanaBuscarArticulo;
 	CardLayout carta;
 	private JPanel panel;
@@ -80,7 +81,7 @@ public class FrameGlobal extends JFrame {
 		carta=new CardLayout(0, 0);
 		contentPanel.setLayout(carta);
 		contenedorImagen=new JPanel();
-		contenedorImagen.setLayout(null);
+		contenedorImagen.setLayout(carta);
 		
 		Imagen nueva=new Imagen();
 		nueva.setBounds(0, 0, 594, 400);
@@ -103,7 +104,7 @@ public class FrameGlobal extends JFrame {
 		ventanaBuscarArticulo=new BuscarArticulo();
 		contentPanel.add(ventanaBuscarArticulo,"ventana5");
 		
-		ventanaFrutero=new PanelFrutero();
+		ventanaFrutero=new PanelFruteroFinalDosPanel();
 		contentPanel.add(ventanaFrutero,"ventana6");
 		
 		//Tamaño
@@ -129,6 +130,13 @@ public class FrameGlobal extends JFrame {
 		mntmModificar = new JMenuItem("Modificar cliente");
 		mntmModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					ventanaModificar.cargarComboBox();
+					ventanaModificar.borrarComboBox();
+					ventanaModificar.cargarComboBox();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
 				carta.show(contentPanel,"ventana3");
 				setResizable(true);
 			}
@@ -138,8 +146,20 @@ public class FrameGlobal extends JFrame {
 		mntmBuscarCliente = new JMenuItem("Buscar cliente");
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				carta.show(contentPanel,"ventana2");
 				setResizable(true);
+				try {
+					ventanaBuscar.cargarComboBox();
+					ventanaBuscar.borrarComboBox();
+					ventanaBuscar.cargarComboBox();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		mnGestor.add(mntmBuscarCliente);

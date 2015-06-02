@@ -16,8 +16,8 @@ import java.util.Date;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,7 +37,8 @@ import Modelo.Inventario;
 import Modelo.LineasDePedido;
 import Modelo.Pedido;
 
-public class PanelFrutero extends JPanel {
+public class PanelFruteroFinalDosPanel extends JPanel {
+
 	private JTable table;
 	private JLabel lblNewLabel;
 	private TextField txtFecha;
@@ -59,27 +60,26 @@ public class PanelFrutero extends JPanel {
 	Pedido pe = new Pedido();
 
 	/**
-	 * Create the panel.
+	 * Create the frame.
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
-	public PanelFrutero() throws ClassNotFoundException, IOException {
+	public PanelFruteroFinalDosPanel() throws ClassNotFoundException, IOException {
 		ListarClientes instancia = new ListarClientes();
 		Cliente cli = new Cliente();
 
 		inv = new Inventario();
 		setBounds(100, 100, 521, 342);
-
-		JPanel contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
+		setLayout(gbl_contentPane);
 		gbl_contentPane.columnWidths = new int[] { 30, 30, 30, 30, 30, 30, 30, 30, 30 };
 		gbl_contentPane.rowHeights = new int[] { 10, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-		contentPane.setLayout(gbl_contentPane);
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+		setLayout(gbl_contentPane);
 		String[] nombreColumnas = { "Articulo", "Precio", "Cantidad", "Total" };
 		Object[][] datos = {};
 		label = new JLabel("N\u00BA Pedido");
@@ -88,7 +88,7 @@ public class PanelFrutero extends JPanel {
 		gbc_label.insets = new Insets(0, 0, 5, 5);
 		gbc_label.gridx = 1;
 		gbc_label.gridy = 1;
-		contentPane.add(label, gbc_label);
+		add(label, gbc_label);
 		int numero = listape.getListaPedido().size() + 1;
 
 		txtNumeroPedido = new TextField();
@@ -100,7 +100,7 @@ public class PanelFrutero extends JPanel {
 		gbc_txtNumeroPedido.insets = new Insets(0, 0, 5, 5);
 		gbc_txtNumeroPedido.gridx = 2;
 		gbc_txtNumeroPedido.gridy = 1;
-		contentPane.add(txtNumeroPedido, gbc_txtNumeroPedido);
+		add(txtNumeroPedido, gbc_txtNumeroPedido);
 
 		lblNewLabel = new JLabel("Fecha");
 		lblNewLabel.setFont(new Font("MV Boli", Font.PLAIN, 12));
@@ -110,7 +110,7 @@ public class PanelFrutero extends JPanel {
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 5;
 		gbc_lblNewLabel.gridy = 1;
-		contentPane.add(lblNewLabel, gbc_lblNewLabel);
+		add(lblNewLabel, gbc_lblNewLabel);
 
 		txtFecha = new TextField();
 		txtFecha.setEditable(false);
@@ -119,7 +119,7 @@ public class PanelFrutero extends JPanel {
 		gbc_txtFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_txtFecha.gridx = 7;
 		gbc_txtFecha.gridy = 1;
-		contentPane.add(txtFecha, gbc_txtFecha);
+		add(txtFecha, gbc_txtFecha);
 		// Pone la fecha actual
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date = new Date();
@@ -131,7 +131,7 @@ public class PanelFrutero extends JPanel {
 		gbc_lblCliente.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCliente.gridx = 1;
 		gbc_lblCliente.gridy = 2;
-		contentPane.add(lblCliente, gbc_lblCliente);
+		add(lblCliente, gbc_lblCliente);
 
 		comboCliente = new JComboBox();
 		GridBagConstraints gbc_comboCliente = new GridBagConstraints();
@@ -140,7 +140,7 @@ public class PanelFrutero extends JPanel {
 		gbc_comboCliente.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboCliente.gridx = 2;
 		gbc_comboCliente.gridy = 2;
-		contentPane.add(comboCliente, gbc_comboCliente);
+		add(comboCliente, gbc_comboCliente);
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
 		gbc_scrollPane.gridwidth = 9;
@@ -149,7 +149,7 @@ public class PanelFrutero extends JPanel {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 3;
-		contentPane.add(scrollPane, gbc_scrollPane);
+		add(scrollPane, gbc_scrollPane);
 		table = new JTable();
 		table.setModel(new DefaultTableModel(datos, nombreColumnas));
 		scrollPane.setViewportView(table);
@@ -172,17 +172,6 @@ public class PanelFrutero extends JPanel {
 				modelo.setValueAt("Sin articulo", contadorColumnas, 0);
 
 				contadorColumnas++;
-
-				System.out.println(contadorColumnas);
-				// for (int i = 0; i < modelo.getRowCount(); i++) {
-				// if (modelo.getValueAt(i, 2).equals(0) || modelo.getValueAt(i,
-				// 3).equals(0)) {
-				// modelo.setValueAt(0, i, 3);
-				// modelo.setValueAt(0, i, 2);
-				// }
-
-				// }
-
 			}
 		});
 		btnAltaPedido.setFont(new Font("MV Boli", Font.PLAIN, 12));
@@ -190,15 +179,13 @@ public class PanelFrutero extends JPanel {
 		gbc_btnAltaPedido.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAltaPedido.gridx = 1;
 		gbc_btnAltaPedido.gridy = 7;
-		contentPane.add(btnAltaPedido, gbc_btnAltaPedido);
+		add(btnAltaPedido, gbc_btnAltaPedido);
 
 		btnCrearpedido = new JButton("FinalizarPedido");
 		btnCrearpedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					listape = new CrearPedido();
-					// mostrarLineasJose();
-					// guardarLineasDePedido();
 					darAltaPedido();
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -217,7 +204,7 @@ public class PanelFrutero extends JPanel {
 		gbc_btnCrearpedido.insets = new Insets(0, 0, 5, 5);
 		gbc_btnCrearpedido.gridx = 3;
 		gbc_btnCrearpedido.gridy = 7;
-		contentPane.add(btnCrearpedido, gbc_btnCrearpedido);
+		add(btnCrearpedido, gbc_btnCrearpedido);
 		btnCrearpedido.setEnabled(false);
 
 		btnNuevopedido = new JButton("NuevoPedido");
@@ -228,9 +215,7 @@ public class PanelFrutero extends JPanel {
 				boolean bandera = false;
 
 				do {
-
 					if (modelo.getRowCount() == 0) {
-						System.out.println("TODO BORRADO");
 						bandera = true;
 					} else {
 						modelo.removeRow(0);
@@ -241,8 +226,6 @@ public class PanelFrutero extends JPanel {
 
 				txtNumeroPedido.setText(String.valueOf(numero));
 
-				// lineas.guardarLineasDePedido(modelo);
-
 			}
 		});
 
@@ -251,7 +234,7 @@ public class PanelFrutero extends JPanel {
 		gbc_btnNuevopedido.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNuevopedido.gridx = 7;
 		gbc_btnNuevopedido.gridy = 7;
-		contentPane.add(btnNuevopedido, gbc_btnNuevopedido);
+		add(btnNuevopedido, gbc_btnNuevopedido);
 		// como meter un combobox en una celda
 		combo = new JComboBox();
 
@@ -318,17 +301,6 @@ public class PanelFrutero extends JPanel {
 		}
 	}
 
-	private void mostrarLineasJose() {
-		System.out.println("tipo " + modelo.getColumnClass(0).getName());
-		for (int i = 0; i < modelo.getRowCount(); i++) {
-			System.out.println("titulo " + modelo.getValueAt(i, 0));
-			System.out.println("por articulo " + inv.buscarArticulo(modelo.getValueAt(i, 0).toString()));
-			System.out.println("Cantidad " + modelo.getValueAt(i, 2));
-
-		}
-
-	}
-
 	private void darAltaPedido() throws NumberFormatException, FileNotFoundException, IOException {
 		boolean bandera = true;
 		for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -336,7 +308,7 @@ public class PanelFrutero extends JPanel {
 					|| modelo.getValueAt(i, 3).equals(0) || modelo.getValueAt(i, 2).equals(0.0)
 					|| modelo.getValueAt(i, 2).equals("") || modelo.getValueAt(i, 3).equals(0.0)
 					|| modelo.getValueAt(i, 0).equals("Sin articulo") || modelo.getValueAt(i, 1).equals("Sin precio")) {
-				System.out.println("No debe dejar ningun campo en blanco");
+				JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco","Error",JOptionPane.ERROR_MESSAGE);
 				bandera = false;
 			}
 		}
@@ -350,18 +322,15 @@ public class PanelFrutero extends JPanel {
 			String fecha = txtFecha.getText().toString();
 			listape.crearNuevoPedido(fecha, Integer.parseInt(txtNumeroPedido.getText()), comboCliente.getSelectedItem()
 					.toString(), pe.getArt());
-			System.out.println("PEDIO CREADO");
+			JOptionPane.showMessageDialog(null, "Pedido creado correctamente","Exito",JOptionPane.INFORMATION_MESSAGE);
 			btnCrearpedido.setEnabled(false);
 		}
 	}
 
 	private void guardarLineasDePedido() {
 		for (int i = 0; i < modelo.getRowCount(); i++) {
-			System.out.println("valor antes " + modelo.getValueAt(i, 2));
 			int cantidad = Integer.valueOf(modelo.getValueAt(i, 2).toString());
-			System.out.println("por articulo " + inv.buscarArticulo(modelo.getValueAt(i, 0).toString()).getNombre());
 			lineas.getLinea().add(new LineasDePedido(String.valueOf(modelo.getValueAt(i, 0)), cantidad));
-
 		}
 	}
 }

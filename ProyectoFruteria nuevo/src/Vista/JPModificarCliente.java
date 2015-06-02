@@ -61,12 +61,16 @@ public class JPModificarCliente extends JPanel{
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				for (int i = 0; i < listica.getListaCliente().size(); i++) {
-					if (comboBox.getSelectedItem().equals(listica.getListaCliente().get(i).getNombre())) {
-						clientecillo=i;
-						txtNombre.setText(listica.getListaCliente().get(i).getNombre());
-						txtApellidos.setText(listica.getListaCliente().get(i).getApellidos());
-						txtDNI.setText(listica.getListaCliente().get(i).getDNI());
-						txtColorPelo.setText(listica.getListaCliente().get(i).getColorDePelo());
+					try {
+						if (comboBox.getSelectedItem().equals(listica.getListaCliente().get(i).getNombre())) {
+							clientecillo=i;
+							txtNombre.setText(listica.getListaCliente().get(i).getNombre());
+							txtApellidos.setText(listica.getListaCliente().get(i).getApellidos());
+							txtDNI.setText(listica.getListaCliente().get(i).getDNI());
+							txtColorPelo.setText(listica.getListaCliente().get(i).getColorDePelo());
+						}
+					} catch (NullPointerException e) {
+						// TODO: handle exception
 					}
 				}
 			}
@@ -182,5 +186,8 @@ public class JPModificarCliente extends JPanel{
 			listica.cargarClientes();
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
+	}
+	public void borrarComboBox(){
+		comboBox.removeAllItems();
 	}
 }
