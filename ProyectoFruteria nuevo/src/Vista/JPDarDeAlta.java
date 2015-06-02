@@ -135,12 +135,12 @@ public class JPDarDeAlta extends JPanel {
 				if (comprobarCampos()==false) {
 					if (listica.buscarCliente(txtNombre.getText(),txtApellidos.getText(), txtDNI.getText(), txtColorPelo.getText())==false) {
 						listica.crearNuevoElemento(txtNombre.getText(),txtApellidos.getText(),txtDNI.getText(), txtColorPelo.getText());
-						JOptionPane.showMessageDialog(null, "El cliente a sido introducido correctamente","Exito",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El cliente ha sido introducido correctamente","Exito",JOptionPane.INFORMATION_MESSAGE);
 					}else{
 						JOptionPane.showMessageDialog(null, "Cliente repetido","Error",JOptionPane.ERROR_MESSAGE);
 					}
 				}else{
-					JOptionPane.showMessageDialog(null, "No puedes dejar un campo en blanco","Error",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "No puedes dejar un campo en blanco","Error",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -168,7 +168,6 @@ public class JPDarDeAlta extends JPanel {
 		}else{
 			return false;
 		}
-		
 	}
 	
 	public JTextField getTxtApellidos() {

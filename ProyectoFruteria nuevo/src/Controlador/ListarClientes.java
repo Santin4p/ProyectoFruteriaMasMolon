@@ -60,4 +60,14 @@ public boolean buscarCliente(String nombre, String apellidos,String DNI, String 
 		Cliente instancia = new Cliente(nombre, apellidos, DNI, colorDePelo);
 		guardarNuevoCliente(instancia);
 	}
-}
+	
+	//Introduce la lista de clientes  en un panel
+		public void listarCli(JComboBox Clientes) throws ClassNotFoundException, IOException {
+			cargarClientes();
+			for (Cliente cliente : getListaCliente()) {
+				Clientes.addItem(cliente.getNombre() + " " + cliente.getApellidos());
+			}
+		}
+
+	}
+
