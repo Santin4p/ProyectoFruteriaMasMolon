@@ -113,7 +113,7 @@ public class BuscarArticulo extends JPanel {
 		comboBox.setMaximumSize(new Dimension(1555, 1555));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (comboBox.getSelectedIndex()==0) {
+				if (comboBox.getSelectedIndex() == 0) {
 					art = inv.buscarArticulo(txtCodigo.getText());
 					txtCodigo.setEnabled(true);
 					btnBuscarProducto.setEnabled(true);
@@ -122,15 +122,20 @@ public class BuscarArticulo extends JPanel {
 					txtPrecioProducto.setText("");
 					lblPVP.setText("");
 				} else {
-					art = inv.buscarArticulo(comboBox.getSelectedItem().toString());
-					txtCodigo.setText("");
-					txtCodigo.setEnabled(false);
-					btnBuscarProducto.setEnabled(false);
-					textAreaDescripcion.setText(art.getDescripcion());
-					txtNombreProducto.setText(art.getNombre());
-					txtPrecioProducto.setText(String.valueOf(art.getPrecio()));
-					lblPVP.setText(String.valueOf(art.calcularPVP()));
-					textAreaDescripcion.setCaretPosition(0);
+					try {
+						art = inv.buscarArticulo(comboBox.getSelectedItem().toString());
+						txtCodigo.setText("");
+						txtCodigo.setEnabled(false);
+						btnBuscarProducto.setEnabled(false);
+						textAreaDescripcion.setText(art.getDescripcion());
+						txtNombreProducto.setText(art.getNombre());
+						txtPrecioProducto.setText(String.valueOf(art.getPrecio()));
+						lblPVP.setText(String.valueOf(art.calcularPVP()));
+						textAreaDescripcion.setCaretPosition(0);
+					} catch (NullPointerException e) {
+						// TODO: handle exception
+					}
+					
 				}
 
 			}
@@ -191,7 +196,7 @@ public class BuscarArticulo extends JPanel {
 		gbc_lblDescripcin.gridx = 1;
 		gbc_lblDescripcin.gridy = 4;
 		panel_1.add(lblDescripcin, gbc_lblDescripcin);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -200,7 +205,7 @@ public class BuscarArticulo extends JPanel {
 		gbc_scrollPane.gridx = 2;
 		gbc_scrollPane.gridy = 4;
 		panel_1.add(scrollPane, gbc_scrollPane);
-		
+
 		textAreaDescripcion = new JTextArea();
 		textAreaDescripcion.setEditable(false);
 		scrollPane.setViewportView(textAreaDescripcion);
@@ -226,6 +231,7 @@ public class BuscarArticulo extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				art = new Articulo();
 				try {
+					inv=new Inventario();
 					art = inv.buscarArticulo(txtCodigo.getText());
 					textAreaDescripcion.setText(art.getDescripcion());
 					txtNombreProducto.setText(art.getNombre());
@@ -253,8 +259,15 @@ public class BuscarArticulo extends JPanel {
 	public void cargarComboBOX() {
 		inv = new Inventario();
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
-			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
-
+			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());	
 		}
+	}
+		
+
+	public void actualizarComboBOX() {
+		cargarComboBOX();
+		comboBox.removeAllItems();
+		cargarComboBOX();
+
 	}
 }
