@@ -171,19 +171,20 @@ public class FrameGlobal extends JFrame {
 		mntmDarDeAltaArticulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				carta.show(contentPanel,"ventana4");
-				setResizable(true);
+				
 			}
 		});
 		mnTendero.add(mntmDarDeAltaArticulo);
 		
 		mntmBuscarArticulo = new JMenuItem("Buscar articulo");
+		mnTendero.add(mntmBuscarArticulo);
 		mntmBuscarArticulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				carta.show(contentPanel,"ventana5");
 				setResizable(true);
-			}
-		});
-		mnTendero.add(mntmBuscarArticulo);
+				ventanaBuscarArticulo.actualizarComboBOX();
+			}});
+		
 		
 		mnFrutero = new JMenu("Frutero");
 		menuBar.add(mnFrutero);

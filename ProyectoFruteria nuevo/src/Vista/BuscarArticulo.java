@@ -50,7 +50,7 @@ public class BuscarArticulo extends JPanel {
 	private JLabel lblPVP;
 	private JLabel lblCodigo;
 	private JTextField txtCodigo;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	private Inventario inv;
 	private Articulo art;
 	private JScrollPane scrollPane;
@@ -109,19 +109,20 @@ public class BuscarArticulo extends JPanel {
 		panel_1.add(txtCodigo, gbc_txtCodigo);
 		txtCodigo.setColumns(10);
 
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setMaximumSize(new Dimension(1555, 1555));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (comboBox.getSelectedIndex()==0) {
-					art = inv.buscarArticulo(txtCodigo.getText());
-					txtCodigo.setEnabled(true);
-					btnBuscarProducto.setEnabled(true);
-					textAreaDescripcion.setText("");
-					txtNombreProducto.setText("");
-					txtPrecioProducto.setText("");
-					lblPVP.setText("");
-				} else {
+				 if (comboBox.getSelectedIndex() == 0) {
+				 art = inv.buscarArticulo(txtCodigo.getText());
+				 txtCodigo.setEnabled(true);
+				 btnBuscarProducto.setEnabled(true);
+				 textAreaDescripcion.setText("");
+				 txtNombreProducto.setText("");
+				 txtPrecioProducto.setText("");
+				 lblPVP.setText("");
+				 } else {
+				try {
 					art = inv.buscarArticulo(comboBox.getSelectedItem().toString());
 					txtCodigo.setText("");
 					txtCodigo.setEnabled(false);
@@ -131,11 +132,13 @@ public class BuscarArticulo extends JPanel {
 					txtPrecioProducto.setText(String.valueOf(art.getPrecio()));
 					lblPVP.setText(String.valueOf(art.calcularPVP()));
 					textAreaDescripcion.setCaretPosition(0);
+				} catch (NullPointerException e) {
+					// TODO: handle exception
 				}
 
 			}
-		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Seleccione un c\u00F3digo" }));
+
+			}});
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -191,7 +194,7 @@ public class BuscarArticulo extends JPanel {
 		gbc_lblDescripcin.gridx = 1;
 		gbc_lblDescripcin.gridy = 4;
 		panel_1.add(lblDescripcin, gbc_lblDescripcin);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -200,7 +203,7 @@ public class BuscarArticulo extends JPanel {
 		gbc_scrollPane.gridx = 2;
 		gbc_scrollPane.gridy = 4;
 		panel_1.add(scrollPane, gbc_scrollPane);
-		
+
 		textAreaDescripcion = new JTextArea();
 		textAreaDescripcion.setEditable(false);
 		scrollPane.setViewportView(textAreaDescripcion);
@@ -225,7 +228,9 @@ public class BuscarArticulo extends JPanel {
 		btnBuscarProducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Articulo art = new Articulo();
+				art = new Articulo();
 				try {
+					inv = new Inventario();
 					art = inv.buscarArticulo(txtCodigo.getText());
 					textAreaDescripcion.setText(art.getDescripcion());
 					txtNombreProducto.setText(art.getNombre());
@@ -236,7 +241,9 @@ public class BuscarArticulo extends JPanel {
 					JOptionPane.showMessageDialog(null, "El articulo no ha sido encontrado", "Lo siento",
 							JOptionPane.ERROR_MESSAGE);
 				}
+
 			}
+
 		});
 		btnBuscarProducto.setFont(new Font("MV Boli", Font.BOLD, 12));
 		GridBagConstraints gbc_btnBuscarProducto = new GridBagConstraints();
@@ -246,12 +253,18 @@ public class BuscarArticulo extends JPanel {
 		gbc_btnBuscarProducto.gridx = 2;
 		gbc_btnBuscarProducto.gridy = 6;
 		panel_1.add(btnBuscarProducto, gbc_btnBuscarProducto);
-		cargarComboBOX();
-
 	}
 	public void cargarComboBOX() {
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
 			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
 		}
+	}
+
+	public void actualizarComboBOX() {
+		cargarComboBOX();
+		comboBox.removeAllItems();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Seleccione un c\u00F3digo" }));
+		cargarComboBOX();
+		
 	}
 }

@@ -24,7 +24,7 @@ public class Inventario implements Serializable {
 
 	public Inventario() {
 		listaArticulos = new ArrayList<Articulo>();
-		articulo = new File("articulos.obj");
+		articulo = new File("articulos.dat");
 		if (!articulo.exists()) {
 			try {
 				objetoEscritura = new ObjectOutputStream(new FileOutputStream(articulo));
@@ -42,7 +42,6 @@ public class Inventario implements Serializable {
 				oospers = new MiObjectPersonalizado(new FileOutputStream(articulo, true));
 				objetoLectura = new ObjectInputStream(new FileInputStream(articulo));
 				listaArticulos = leerObjToArray();
-
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
