@@ -1,2 +1,4 @@
 /bin/
 /articulos.obj
+*.dat
+*.obj
