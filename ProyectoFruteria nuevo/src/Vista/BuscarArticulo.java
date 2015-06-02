@@ -113,34 +113,32 @@ public class BuscarArticulo extends JPanel {
 		comboBox.setMaximumSize(new Dimension(1555, 1555));
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (comboBox.getSelectedIndex() == 0) {
-					art = inv.buscarArticulo(txtCodigo.getText());
-					txtCodigo.setEnabled(true);
-					btnBuscarProducto.setEnabled(true);
-					textAreaDescripcion.setText("");
-					txtNombreProducto.setText("");
-					txtPrecioProducto.setText("");
-					lblPVP.setText("");
-				} else {
-					try {
-						art = inv.buscarArticulo(comboBox.getSelectedItem().toString());
-						txtCodigo.setText("");
-						txtCodigo.setEnabled(false);
-						btnBuscarProducto.setEnabled(false);
-						textAreaDescripcion.setText(art.getDescripcion());
-						txtNombreProducto.setText(art.getNombre());
-						txtPrecioProducto.setText(String.valueOf(art.getPrecio()));
-						lblPVP.setText(String.valueOf(art.calcularPVP()));
-						textAreaDescripcion.setCaretPosition(0);
-					} catch (NullPointerException e) {
-						// TODO: handle exception
-					}
-					
+				 if (comboBox.getSelectedIndex() == 0) {
+				 art = inv.buscarArticulo(txtCodigo.getText());
+				 txtCodigo.setEnabled(true);
+				 btnBuscarProducto.setEnabled(true);
+				 textAreaDescripcion.setText("");
+				 txtNombreProducto.setText("");
+				 txtPrecioProducto.setText("");
+				 lblPVP.setText("");
+				 } else {
+				try {
+					art = inv.buscarArticulo(comboBox.getSelectedItem().toString());
+					txtCodigo.setText("");
+					txtCodigo.setEnabled(false);
+					btnBuscarProducto.setEnabled(false);
+					textAreaDescripcion.setText(art.getDescripcion());
+					txtNombreProducto.setText(art.getNombre());
+					txtPrecioProducto.setText(String.valueOf(art.getPrecio()));
+					lblPVP.setText(String.valueOf(art.calcularPVP()));
+					textAreaDescripcion.setCaretPosition(0);
+				} catch (NullPointerException e) {
+					// TODO: handle exception
 				}
 
 			}
-		});
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Seleccione un c\u00F3digo" }));
+
+			}});
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -231,7 +229,7 @@ public class BuscarArticulo extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				art = new Articulo();
 				try {
-					inv=new Inventario();
+					inv = new Inventario();
 					art = inv.buscarArticulo(txtCodigo.getText());
 					textAreaDescripcion.setText(art.getDescripcion());
 					txtNombreProducto.setText(art.getNombre());
@@ -259,15 +257,16 @@ public class BuscarArticulo extends JPanel {
 	public void cargarComboBOX() {
 		inv = new Inventario();
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
-			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());	
+			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
 		}
 	}
-		
 
 	public void actualizarComboBOX() {
 		cargarComboBOX();
 		comboBox.removeAllItems();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "Seleccione un c\u00F3digo" }));
 		cargarComboBOX();
+		
 
 	}
 }
