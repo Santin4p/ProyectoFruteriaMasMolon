@@ -8,9 +8,19 @@ public class Pedido implements Serializable {
 	int numeroPedido;
 	String cliente;
 	ArrayList<Articulo> art = new ArrayList();
+	ArrayList nombreArt = new ArrayList();
 
 	public Pedido() {
 
+	}
+
+	public Pedido(String fecha, int numeroPedido, String cliente, ArrayList<Articulo> art, ArrayList nombreArt) {
+		super();
+		this.fecha = fecha;
+		this.numeroPedido = numeroPedido;
+		this.cliente = cliente;
+		this.art = art;
+		this.nombreArt = nombreArt;
 	}
 
 	public Pedido(String fecha, int numeroPedido, String cliente) {
@@ -19,7 +29,7 @@ public class Pedido implements Serializable {
 		this.numeroPedido = numeroPedido;
 		this.cliente = cliente;
 	}
-	
+
 	public Pedido(String fecha, int numeroPedido, String cliente, ArrayList<Articulo> art) {
 		super();
 		this.fecha = fecha;
@@ -31,6 +41,7 @@ public class Pedido implements Serializable {
 	public Pedido(ArrayList<Articulo> art) {
 		this.art = art;
 	}
+
 	public String getFecha() {
 		return fecha;
 	}
@@ -61,6 +72,14 @@ public class Pedido implements Serializable {
 
 	public void setArt(ArrayList<Articulo> art) {
 		this.art = art;
+	}
+
+	public ArrayList getNombreArt() {
+		return nombreArt;
+	}
+
+	public void setNombreArt(ArrayList nombreArt) {
+		this.nombreArt = nombreArt;
 	}
 
 }
