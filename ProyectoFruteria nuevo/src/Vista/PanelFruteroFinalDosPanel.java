@@ -316,12 +316,17 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 			bandera = false;
 		}
 		if (bandera == true) {
+			Articulo art = new Articulo();
+				
 			for (int j = 0; j < modelo.getRowCount(); j++) {
-				pe.getArt().add(inv.buscarArticulo(modelo.getValueAt(j, 0).toString()));
+				art =inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0)));
+				
+				pe.getArt().add( inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0))));
+				pe.getNombreArt().add(art.getNombre());
 			}
 			String fecha = txtFecha.getText().toString();
 			listape.crearNuevoPedido(fecha, Integer.parseInt(txtNumeroPedido.getText()), comboCliente.getSelectedItem()
-					.toString(), pe.getArt());
+					.toString(), pe.getArt(),pe.getNombreArt());
 			JOptionPane.showMessageDialog(null, "Pedido creado correctamente","Exito",JOptionPane.INFORMATION_MESSAGE);
 			btnCrearpedido.setEnabled(false);
 		}
