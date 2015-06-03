@@ -12,7 +12,8 @@ import java.io.ObjectOutputStream;
 import Controlador.MiObjectPersonalizado1;
 
 public class AccesoFicheros {
-
+	private ObjectOutputStream nuevo;
+	
 	public Object leerObjeto(String ruta) throws IOException, ClassNotFoundException {
 		return new ObjectInputStream(new BufferedInputStream(new FileInputStream(ruta))).readObject();
 	}

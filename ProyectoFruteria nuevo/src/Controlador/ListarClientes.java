@@ -2,7 +2,9 @@ package Controlador;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,12 +19,14 @@ public class ListarClientes implements Serializable{
 	private ArrayList<Cliente> listaCliente;
 	final String fichero = "clientes.dat";
 
+
 	public ListarClientes() throws ClassNotFoundException, IOException {
 		setListaClientes(new ArrayList<Cliente>());
 		try {
 			if(new File(fichero).exists())
 				cargarClientes();
 		} catch (FileNotFoundException e) {
+			
 		}
 	}
 	
