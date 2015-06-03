@@ -227,7 +227,6 @@ public class BuscarArticulo extends JPanel {
 		btnBuscarProducto = new JButton("Buscar producto");
 		btnBuscarProducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Articulo art = new Articulo();
 				art = new Articulo();
 				try {
 					inv = new Inventario();
@@ -255,6 +254,7 @@ public class BuscarArticulo extends JPanel {
 		panel_1.add(btnBuscarProducto, gbc_btnBuscarProducto);
 	}
 	public void cargarComboBOX() {
+		inv=new Inventario();
 		for (int i = 0; i < inv.getListaArticulos().size(); i++) {
 			comboBox.addItem(inv.getListaArticulos().get(i).getCodigo());
 		}

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Vista.BuscarArticulo;
+import Vista.JPDarDeAlta;
 
 public class VentanaPruebas extends JFrame {
 
@@ -38,7 +39,7 @@ public class VentanaPruebas extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(new BuscarArticulo());
+		setContentPane(new JPDarDeAlta());
 		
 	}
 
