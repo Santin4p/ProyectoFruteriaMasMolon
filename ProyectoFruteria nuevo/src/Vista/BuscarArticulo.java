@@ -227,7 +227,6 @@ public class BuscarArticulo extends JPanel {
 		btnBuscarProducto = new JButton("Buscar producto");
 		btnBuscarProducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Articulo art = new Articulo();
 				art = new Articulo();
 				try {
 					inv = new Inventario();

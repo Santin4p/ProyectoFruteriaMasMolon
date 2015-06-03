@@ -149,17 +149,7 @@ public class FrameGlobal extends JFrame {
 				
 				carta.show(contentPanel,"ventana2");
 				setResizable(true);
-				try {
-					ventanaBuscar.cargarComboBox();
-					ventanaBuscar.borrarComboBox();
-					ventanaBuscar.cargarComboBox();
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				ventanaBuscarArticulo.actualizarComboBOX();
 			}
 		});
 		mnGestor.add(mntmBuscarCliente);
