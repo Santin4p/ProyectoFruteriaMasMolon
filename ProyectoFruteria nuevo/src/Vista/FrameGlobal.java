@@ -51,7 +51,6 @@ public class FrameGlobal extends JFrame {
 	private JMenuItem mntmModificar;
 	private JMenuItem mntmBuscarCliente;
 	private JPanel contenedorImagen;
-
 	/**
 	 * Launch the application.
 	 */
@@ -146,10 +145,15 @@ public class FrameGlobal extends JFrame {
 		mntmBuscarCliente = new JMenuItem("Buscar cliente");
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					ventanaBuscar.cargarComboBox();
+					ventanaBuscar.borrarComboBox();
+					ventanaBuscar.cargarComboBox();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
 				carta.show(contentPanel,"ventana2");
 				setResizable(true);
-				ventanaBuscarArticulo.actualizarComboBOX();
 			}
 		});
 		mnGestor.add(mntmBuscarCliente);

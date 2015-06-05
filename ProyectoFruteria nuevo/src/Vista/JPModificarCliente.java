@@ -181,9 +181,10 @@ public class JPModificarCliente extends JPanel{
 		add(btnModificar, gbc_btnModificar);
 		cargarComboBox();
 	}
+	
 	public void cargarComboBox() throws ClassNotFoundException, IOException{
+		listica.cargarClientes();
 		for (int i = 0; i < listica.getListaCliente().size(); i++) {
-			listica.cargarClientes();
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
 	}
