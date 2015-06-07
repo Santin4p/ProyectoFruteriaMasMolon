@@ -1,4 +1,4 @@
-package Vista;
+package Controlador;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -20,8 +20,16 @@ import javax.swing.JMenuItem;
 
 
 
+
 import Test.VentanaPruebas;
-import Controlador.ListarClientes;
+import Vista.AltaProducto;
+import Vista.BuscarArticulo;
+import Vista.BuscarPedido;
+import Vista.Imagen;
+import Vista.JPBuscarCliente;
+import Vista.JPDarDeAlta;
+import Vista.JPModificarCliente;
+import Vista.PanelFruteroFinalDosPanel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -82,7 +90,7 @@ public class FrameGlobal extends JFrame {
 		carta=new CardLayout(0, 0);
 		contentPanel.setLayout(carta);
 		contenedorImagen=new JPanel();
-		contenedorImagen.setLayout(null);
+		contenedorImagen.setLayout(carta);
 		
 		Imagen nueva=new Imagen();
 		nueva.setBounds(0, 0, 594, 400);

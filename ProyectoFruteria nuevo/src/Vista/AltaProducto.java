@@ -30,8 +30,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
+import Controlador.Inventario;
 import Modelo.Articulo;
-import Modelo.Inventario;
 
 public class AltaProducto extends JPanel {
 	private JLabel lblNewLabel;

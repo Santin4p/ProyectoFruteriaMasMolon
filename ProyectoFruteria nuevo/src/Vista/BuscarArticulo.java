@@ -33,8 +33,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 
+import Controlador.Inventario;
 import Modelo.Articulo;
-import Modelo.Inventario;
 
 import java.awt.Cursor;
 

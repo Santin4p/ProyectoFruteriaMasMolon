@@ -29,11 +29,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 
+import Controlador.CrearPedido;
+import Controlador.Inventario;
 import Controlador.ListarClientes;
 import Modelo.Articulo;
 import Modelo.Cliente;
-import Modelo.CrearPedido;
-import Modelo.Inventario;
 import Modelo.LineasDePedido;
 import Modelo.Pedido;
 

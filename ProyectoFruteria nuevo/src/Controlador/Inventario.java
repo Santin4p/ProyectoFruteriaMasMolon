@@ -1,4 +1,4 @@
-package Modelo;
+package Controlador;
 
 import java.io.EOFException;
 import java.io.File;
@@ -11,8 +11,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Controlador.MiObjectPersonalizado;
-
+import Modelo.Articulo;
 
 public class Inventario implements Serializable {
 	private File articulo;

@@ -1,4 +1,4 @@
-package Modelo;
+package Controlador;
 
 import java.awt.TextField;
 import java.io.File;
@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import Modelo.AccesoFicheros;
+import Modelo.Articulo;
+import Modelo.Pedido;
 
 public class CrearPedido implements Serializable {
 	public ArrayList<Pedido> listaPedido;

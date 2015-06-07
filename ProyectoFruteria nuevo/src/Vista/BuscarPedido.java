@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 
-import Modelo.CrearPedido;
+import Controlador.CrearPedido;
 import Modelo.Pedido;
 
 import java.awt.Insets;
