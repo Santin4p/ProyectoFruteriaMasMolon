@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Vista.BuscarArticulo;
+import Vista.BuscarProducto;
 import Vista.JPDarDeAlta;
 
 public class VentanaPruebas extends JFrame {

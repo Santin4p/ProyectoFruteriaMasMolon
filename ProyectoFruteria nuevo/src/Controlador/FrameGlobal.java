@@ -24,7 +24,7 @@ import javax.swing.JMenuItem;
 
 import Test.VentanaPruebas;
 import Vista.AltaProducto;
-import Vista.BuscarArticulo;
+import Vista.BuscarProducto;
 import Vista.BuscarPedido;
 import Vista.Imagen;
 import Vista.JPBuscarCliente;
@@ -47,7 +47,7 @@ public class FrameGlobal extends JFrame {
 	private JPModificarCliente ventanaModificar;
 	private AltaProducto ventanaAltaProducto;
 	private PanelFruteroFinalDosPanel ventanaFrutero;
-	private BuscarArticulo ventanaBuscarArticulo;
+	private BuscarProducto ventanaBuscarArticulo;
 	private BuscarPedido ventanaBuscarPedido;
 	CardLayout carta;
 	private JPanel panel;
@@ -111,7 +111,7 @@ public class FrameGlobal extends JFrame {
 		ventanaAltaProducto=new AltaProducto();
 		contentPanel.add(ventanaAltaProducto,"ventana4");
 		
-		ventanaBuscarArticulo=new BuscarArticulo();
+		ventanaBuscarArticulo=new BuscarProducto();
 		contentPanel.add(ventanaBuscarArticulo,"ventana5");
 		
 		ventanaFrutero=new PanelFruteroFinalDosPanel();

@@ -46,7 +46,7 @@ public class AltaProducto extends JPanel {
 	private Inventario inv;
 	private JTextArea textAreaDescripcion;
 	private JScrollPane scrollPane;
-	private BuscarArticulo findart;
+	private BuscarProducto findart;
 
 	/**
 	 * Create the panel.
@@ -69,9 +69,9 @@ public class AltaProducto extends JPanel {
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 74, 120, 0, 72 };
-		gbl_panel_1.rowHeights = new int[] { 76, 0, 52, 43, 60, 43, 0 };
-		gbl_panel_1.columnWeights = new double[] { 1.0, 0.0, 1.0, 1.0 };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0 };
+		gbl_panel_1.rowHeights = new int[] { 67, 0, 52, 43, 60, 43, 0 };
+		gbl_panel_1.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0 };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0 };
 		panel_1.setLayout(gbl_panel_1);
 
 		lblNewLabel = new JLabel("Alta de productos");

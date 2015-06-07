@@ -38,7 +38,7 @@ import Modelo.Articulo;
 
 import java.awt.Cursor;
 
-public class BuscarArticulo extends JPanel {
+public class BuscarProducto extends JPanel {
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_2;
 	private JTextField txtNombreProducto;
@@ -59,7 +59,7 @@ public class BuscarArticulo extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public BuscarArticulo() {
+	public BuscarProducto() {
 		inv = new Inventario();
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 501, 0 };
@@ -78,8 +78,8 @@ public class BuscarArticulo extends JPanel {
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 25, 60, 0, 91, 0 };
 		gbl_panel_1.rowHeights = new int[] { 49, 0, 30, 33, 50, 35, 0, 0 };
-		gbl_panel_1.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0 };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0 };
+		gbl_panel_1.columnWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 		panel_1.setLayout(gbl_panel_1);
 
 		lblNewLabel = new JLabel("Busqueda de productos");
