@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -38,7 +39,7 @@ import Modelo.LineasDePedido;
 import Modelo.Pedido;
 
 public class PanelFruteroFinalDosPanel extends JPanel {
-
+	ListarClientes listica;
 	private JTable table;
 	private JLabel lblNewLabel;
 	private TextField txtFecha;
@@ -288,18 +289,40 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 
 			}
 		});
-		cargarCombo();
+//		cargarCombo();
 
 		// Carga lista de clientes
-		instancia.listarCli(comboCliente);
+//		instancia.listarCli(comboCliente);
 
 	}
 
-	public void cargarCombo() {
+	public void cargarComboArticulos() {
+		inv=new Inventario();
 		for (int j = 0; j < inv.getListaArticulos().size(); j++) {
 			combo.addItem(inv.getListaArticulos().get(j).getCodigo());
 		}
 	}
+	
+	public void actualizarComboBOXArticulos() {
+		cargarComboArticulos();
+		combo.removeAllItems();
+		cargarComboArticulos();
+		
+	}
+	
+	public void cargarComboClientes() throws ClassNotFoundException, IOException{
+		listica=new ListarClientes();
+		for (int i = 0; i < listica.getListaCliente().size(); i++) {
+			comboCliente.addItem(listica.getListaCliente().get(i).getNombre());
+		}
+	}
+	public void actualizarComboBOXClientes() throws ClassNotFoundException, IOException {
+		cargarComboClientes();
+		comboCliente.removeAllItems();
+		cargarComboClientes();
+		
+	}
+	
 
 	private void darAltaPedido() throws NumberFormatException, FileNotFoundException, IOException {
 		boolean bandera = true;

@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 
 
 
+
 import Test.VentanaPruebas;
 import Vista.AltaProducto;
 import Vista.BuscarArticulo;
@@ -143,9 +144,7 @@ public class FrameGlobal extends JFrame {
 		mntmModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ventanaModificar.cargarComboBox();
-					ventanaModificar.borrarComboBox();
-					ventanaModificar.cargarComboBox();
+					ventanaModificar.actualizarComboBOX();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -159,9 +158,7 @@ public class FrameGlobal extends JFrame {
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ventanaBuscar.cargarComboBox();
-					ventanaBuscar.borrarComboBox();
-					ventanaBuscar.cargarComboBox();
+					ventanaBuscar.actualizarComboBOX();
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
@@ -201,6 +198,16 @@ public class FrameGlobal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				carta.show(contentPanel, "ventana6");
 				setResizable(true);
+				ventanaFrutero.actualizarComboBOXArticulos();
+				try {
+					ventanaFrutero.actualizarComboBOXClientes();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		mnFrutero.add(mntmCrearPedido);

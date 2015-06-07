@@ -1,5 +1,6 @@
 package Vista;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
@@ -162,7 +163,10 @@ public class JPBuscarCliente extends JPanel{
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
 	}
-	public void borrarComboBox(){
+	public void actualizarComboBOX() throws ClassNotFoundException, IOException {
+		cargarComboBox();
 		comboBox.removeAllItems();
+		cargarComboBox();
+		
 	}
 }

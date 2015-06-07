@@ -1,5 +1,6 @@
 package Vista;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -179,7 +180,7 @@ public class JPModificarCliente extends JPanel{
 		gbc_btnModificar.gridx = 4;
 		gbc_btnModificar.gridy = 4;
 		add(btnModificar, gbc_btnModificar);
-		cargarComboBox();
+//		cargarComboBox();
 	}
 	
 	public void cargarComboBox() throws ClassNotFoundException, IOException{
@@ -188,7 +189,10 @@ public class JPModificarCliente extends JPanel{
 			comboBox.addItem(listica.getListaCliente().get(i).getNombre());
 		}
 	}
-	public void borrarComboBox(){
+	public void actualizarComboBOX() throws ClassNotFoundException, IOException {
+		cargarComboBox();
 		comboBox.removeAllItems();
+		cargarComboBox();
+		
 	}
 }
