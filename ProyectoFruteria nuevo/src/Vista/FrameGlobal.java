@@ -39,6 +39,7 @@ public class FrameGlobal extends JFrame {
 	private AltaProducto ventanaAltaProducto;
 	private PanelFruteroFinalDosPanel ventanaFrutero;
 	private BuscarArticulo ventanaBuscarArticulo;
+	private BuscarPedido ventanaBuscarPedido;
 	CardLayout carta;
 	private JPanel panel;
 	private JMenu mnGestor;
@@ -51,6 +52,7 @@ public class FrameGlobal extends JFrame {
 	private JMenuItem mntmModificar;
 	private JMenuItem mntmBuscarCliente;
 	private JPanel contenedorImagen;
+	private JMenuItem mntmBuscarPedido;
 	/**
 	 * Launch the application.
 	 */
@@ -80,7 +82,7 @@ public class FrameGlobal extends JFrame {
 		carta=new CardLayout(0, 0);
 		contentPanel.setLayout(carta);
 		contenedorImagen=new JPanel();
-		contenedorImagen.setLayout(carta);
+		contenedorImagen.setLayout(null);
 		
 		Imagen nueva=new Imagen();
 		nueva.setBounds(0, 0, 594, 400);
@@ -105,6 +107,9 @@ public class FrameGlobal extends JFrame {
 		
 		ventanaFrutero=new PanelFruteroFinalDosPanel();
 		contentPanel.add(ventanaFrutero,"ventana6");
+		
+		ventanaBuscarPedido=new BuscarPedido();
+		contentPanel.add(ventanaBuscarPedido,"ventana7");
 		
 		//Tamaño
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -191,5 +196,14 @@ public class FrameGlobal extends JFrame {
 			}
 		});
 		mnFrutero.add(mntmCrearPedido);
+		
+		mntmBuscarPedido = new JMenuItem("Buscar pedido");
+		mntmBuscarPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				carta.show(contentPanel, "ventana7");
+				setResizable(true);
+			}
+		});
+		mnFrutero.add(mntmBuscarPedido);
 	}
 }
