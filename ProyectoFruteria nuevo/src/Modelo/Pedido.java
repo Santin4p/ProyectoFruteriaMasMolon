@@ -7,11 +7,27 @@ public class Pedido implements Serializable {
 	String fecha;
 	int numeroPedido;
 	String cliente;
+	ArrayList precio = new ArrayList();
+	ArrayList cantidad = new ArrayList();
+	ArrayList total = new ArrayList();
 	ArrayList<Articulo> art = new ArrayList();
 	ArrayList nombreArt = new ArrayList();
 
 	public Pedido() {
 
+	}
+
+	public Pedido(String fecha, int numeroPedido, String cliente, ArrayList<Articulo> art, ArrayList nombreArt,
+			ArrayList precio, ArrayList cantidad, ArrayList total) {
+		super();
+		this.fecha = fecha;
+		this.numeroPedido = numeroPedido;
+		this.cliente = cliente;
+		this.precio = precio;
+		this.cantidad = cantidad;
+		this.total = total;
+		this.art = art;
+		this.nombreArt = nombreArt;
 	}
 
 	public Pedido(String fecha, int numeroPedido, String cliente, ArrayList<Articulo> art, ArrayList nombreArt) {
@@ -80,6 +96,30 @@ public class Pedido implements Serializable {
 
 	public void setNombreArt(ArrayList nombreArt) {
 		this.nombreArt = nombreArt;
+	}
+
+	public ArrayList getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(ArrayList precio) {
+		this.precio = precio;
+	}
+
+	public ArrayList getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(ArrayList cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public ArrayList getTotal() {
+		return total;
+	}
+
+	public void setTotal(ArrayList total) {
+		this.total = total;
 	}
 
 }

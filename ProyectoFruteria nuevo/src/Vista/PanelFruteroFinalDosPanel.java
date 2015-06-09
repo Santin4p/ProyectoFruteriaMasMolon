@@ -73,7 +73,7 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 		inv = new Inventario();
 		setBounds(100, 100, 521, 342);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		setLayout(gbl_contentPane);
 		gbl_contentPane.columnWidths = new int[] { 30, 30, 30, 30, 30, 30, 30, 30, 30 };
@@ -289,40 +289,40 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 
 			}
 		});
-//		cargarCombo();
+		// cargarCombo();
 
 		// Carga lista de clientes
-//		instancia.listarCli(comboCliente);
+		// instancia.listarCli(comboCliente);
 
 	}
 
 	public void cargarComboArticulos() {
-		inv=new Inventario();
+		inv = new Inventario();
 		for (int j = 0; j < inv.getListaArticulos().size(); j++) {
 			combo.addItem(inv.getListaArticulos().get(j).getCodigo());
 		}
 	}
-	
+
 	public void actualizarComboBOXArticulos() {
 		cargarComboArticulos();
 		combo.removeAllItems();
 		cargarComboArticulos();
-		
+
 	}
-	
-	public void cargarComboClientes() throws ClassNotFoundException, IOException{
-		listica=new ListarClientes();
+
+	public void cargarComboClientes() throws ClassNotFoundException, IOException {
+		listica = new ListarClientes();
 		for (int i = 0; i < listica.getListaCliente().size(); i++) {
 			comboCliente.addItem(listica.getListaCliente().get(i).getNombre());
 		}
 	}
+
 	public void actualizarComboBOXClientes() throws ClassNotFoundException, IOException {
 		cargarComboClientes();
 		comboCliente.removeAllItems();
 		cargarComboClientes();
-		
+
 	}
-	
 
 	private void darAltaPedido() throws NumberFormatException, FileNotFoundException, IOException {
 		boolean bandera = true;
@@ -331,7 +331,8 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 					|| modelo.getValueAt(i, 3).equals(0) || modelo.getValueAt(i, 2).equals(0.0)
 					|| modelo.getValueAt(i, 2).equals("") || modelo.getValueAt(i, 3).equals(0.0)
 					|| modelo.getValueAt(i, 0).equals("Sin articulo") || modelo.getValueAt(i, 1).equals("Sin precio")) {
-				JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "No puedes dejar ningun campo en blanco", "Error",
+						JOptionPane.ERROR_MESSAGE);
 				bandera = false;
 			}
 		}
@@ -340,17 +341,22 @@ public class PanelFruteroFinalDosPanel extends JPanel {
 		}
 		if (bandera == true) {
 			Articulo art = new Articulo();
-				
+
 			for (int j = 0; j < modelo.getRowCount(); j++) {
-				art =inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0)));
-				
-				pe.getArt().add( inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0))));
+				art = inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0)));
+/////////////////////////////////////
+				pe.getArt().add(inv.buscarArticulo(String.valueOf(modelo.getValueAt(j, 0))));
 				pe.getNombreArt().add(art.getNombre());
+				
+				pe.getPrecio().add(String.valueOf(modelo.getValueAt(j, 1)));
+				pe.getCantidad().add(String.valueOf(modelo.getValueAt(j, 2)));
+				pe.getTotal().add(String.valueOf(modelo.getValueAt(j, 3)));
 			}
 			String fecha = txtFecha.getText().toString();
 			listape.crearNuevoPedido(fecha, Integer.parseInt(txtNumeroPedido.getText()), comboCliente.getSelectedItem()
-					.toString(), pe.getArt(),pe.getNombreArt());
-			JOptionPane.showMessageDialog(null, "Pedido creado correctamente","Exito",JOptionPane.INFORMATION_MESSAGE);
+					.toString(), pe.getArt(), pe.getNombreArt(), pe.getPrecio(), pe.getCantidad(), pe.getTotal());
+			JOptionPane
+					.showMessageDialog(null, "Pedido creado correctamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
 			btnCrearpedido.setEnabled(false);
 		}
 	}

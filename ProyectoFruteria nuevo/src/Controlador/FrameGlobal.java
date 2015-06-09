@@ -15,13 +15,6 @@ import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-
-
-
-
-
-
-
 import Test.VentanaPruebas;
 import Vista.AltaProducto;
 import Vista.BuscarProducto;
@@ -62,6 +55,7 @@ public class FrameGlobal extends JFrame {
 	private JMenuItem mntmBuscarCliente;
 	private JPanel contenedorImagen;
 	private JMenuItem mntmBuscarPedido;
+
 	/**
 	 * Launch the application.
 	 */
@@ -80,66 +74,67 @@ public class FrameGlobal extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
 	 */
 	public FrameGlobal() throws ClassNotFoundException, IOException {
 		setResizable(false);
 		contentPanel = new JPanel();
 		setContentPane(contentPanel);
-		
-		carta=new CardLayout(0, 0);
+
+		carta = new CardLayout(0, 0);
 		contentPanel.setLayout(carta);
-		contenedorImagen=new JPanel();
+		contenedorImagen = new JPanel();
 		contenedorImagen.setLayout(carta);
-		
-		Imagen nueva=new Imagen();
+
+		Imagen nueva = new Imagen();
 		nueva.setBounds(0, 0, 594, 400);
 		contenedorImagen.add(nueva);
 		nueva.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		contentPanel.add(contenedorImagen,"name_1212");
-		
+		contentPanel.add(contenedorImagen, "name_1212");
+
 		ventanaAlta = new JPDarDeAlta();
 		contentPanel.add(ventanaAlta, "ventana1");
-		
-		ventanaBuscar=new JPBuscarCliente();
+
+		ventanaBuscar = new JPBuscarCliente();
 		contentPanel.add(ventanaBuscar, "ventana2");
-		
-		ventanaModificar=new JPModificarCliente();
-		contentPanel.add(ventanaModificar,"ventana3");
-		
-		ventanaAltaProducto=new AltaProducto();
-		contentPanel.add(ventanaAltaProducto,"ventana4");
-		
-		ventanaBuscarArticulo=new BuscarProducto();
-		contentPanel.add(ventanaBuscarArticulo,"ventana5");
-		
-		ventanaFrutero=new PanelFruteroFinalDosPanel();
-		contentPanel.add(ventanaFrutero,"ventana6");
-		
-		ventanaBuscarPedido=new BuscarPedido();
-		contentPanel.add(ventanaBuscarPedido,"ventana7");
-		
-		//Tamaño
+
+		ventanaModificar = new JPModificarCliente();
+		contentPanel.add(ventanaModificar, "ventana3");
+
+		ventanaAltaProducto = new AltaProducto();
+		contentPanel.add(ventanaAltaProducto, "ventana4");
+
+		ventanaBuscarArticulo = new BuscarProducto();
+		contentPanel.add(ventanaBuscarArticulo, "ventana5");
+
+		ventanaFrutero = new PanelFruteroFinalDosPanel();
+		contentPanel.add(ventanaFrutero, "ventana6");
+
+		ventanaBuscarPedido = new BuscarPedido();
+		contentPanel.add(ventanaBuscarPedido, "ventana7");
+
+		// Tamaño
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 525, 390);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		mnGestor = new JMenu("Gestor");
 		menuBar.add(mnGestor);
-		
+
 		mntmDarDeAlta = new JMenuItem("Dar de alta cliente");
 		mntmDarDeAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				carta.show(contentPanel,"ventana1");
+				carta.show(contentPanel, "ventana1");
 				setResizable(true);
 			}
 		});
-		
+
 		mnGestor.add(mntmDarDeAlta);
-		
+
 		mntmModificar = new JMenuItem("Modificar cliente");
 		mntmModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -148,12 +143,12 @@ public class FrameGlobal extends JFrame {
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
-				carta.show(contentPanel,"ventana3");
+				carta.show(contentPanel, "ventana3");
 				setResizable(true);
 			}
 		});
 		mnGestor.add(mntmModificar);
-		
+
 		mntmBuscarCliente = new JMenuItem("Buscar cliente");
 		mntmBuscarCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,37 +157,37 @@ public class FrameGlobal extends JFrame {
 				} catch (Exception e2) {
 					// TODO: handle exception
 				}
-				carta.show(contentPanel,"ventana2");
+				carta.show(contentPanel, "ventana2");
 				setResizable(true);
 			}
 		});
 		mnGestor.add(mntmBuscarCliente);
-		
+
 		mnTendero = new JMenu("Tendero");
 		menuBar.add(mnTendero);
-		
+
 		mntmDarDeAltaArticulo = new JMenuItem("Dar de alta articulo");
 		mntmDarDeAltaArticulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				carta.show(contentPanel,"ventana4");
-				
+				carta.show(contentPanel, "ventana4");
+
 			}
 		});
 		mnTendero.add(mntmDarDeAltaArticulo);
-		
+
 		mntmBuscarArticulo = new JMenuItem("Buscar articulo");
 		mnTendero.add(mntmBuscarArticulo);
 		mntmBuscarArticulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				carta.show(contentPanel,"ventana5");
+				carta.show(contentPanel, "ventana5");
 				setResizable(true);
 				ventanaBuscarArticulo.actualizarComboBOX();
-			}});
-		
-		
+			}
+		});
+
 		mnFrutero = new JMenu("Frutero");
 		menuBar.add(mnFrutero);
-		
+
 		mntmCrearPedido = new JMenuItem("Crear pedido");
 		mntmCrearPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -211,7 +206,7 @@ public class FrameGlobal extends JFrame {
 			}
 		});
 		mnFrutero.add(mntmCrearPedido);
-		
+
 		mntmBuscarPedido = new JMenuItem("Buscar pedido");
 		mntmBuscarPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -50,8 +50,9 @@ public class CrearPedido implements Serializable {
 	}
 
 	public void crearNuevoPedido(String fecha, int numeroPedido, String cliente, ArrayList<Articulo> arrayList,
-			ArrayList nombreart) throws FileNotFoundException, IOException {
-		Pedido instancia = new Pedido(fecha, numeroPedido, cliente, arrayList, nombreart);
+			ArrayList nombreart, ArrayList precio, ArrayList cantidad, ArrayList total) throws FileNotFoundException,
+			IOException {
+		Pedido instancia = new Pedido(fecha, numeroPedido, cliente, arrayList, nombreart, precio, cantidad, total);
 		guardarNuevoPedido(instancia);
 	}
 
@@ -67,8 +68,7 @@ public class CrearPedido implements Serializable {
 
 		if (Integer.valueOf(numero.getText()) <= 0 || num >= listaPedido.size()) {
 
-			JOptionPane.showMessageDialog(null, "El numero de pedido no existe", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "El numero de pedido no existe", "Error", JOptionPane.ERROR_MESSAGE);
 			nombre.setText("");
 			fecha.setText("");
 		} else {
@@ -80,6 +80,10 @@ public class CrearPedido implements Serializable {
 				Object[] datos = { null, null, null };
 				((DefaultTableModel) table.getModel()).addRow(datos);
 				table.setValueAt(listaPedido.get(num).getNombreArt().get(j), j, 0);
+				table.setValueAt(listaPedido.get(num).getPrecio().get(j), j, 1);
+				table.setValueAt(listaPedido.get(num).getCantidad().get(j), j, 2);
+				table.setValueAt(listaPedido.get(num).getTotal().get(j), j, 3);
+
 			}
 		}
 
@@ -91,10 +95,16 @@ public class CrearPedido implements Serializable {
 
 		System.out.println();
 		for (Pedido pedido : listaPedido) {
-			System.out.println(pedido.getArt());
-			System.out.println(pedido.getNombreArt());
+			System.out.println("Nombre " + pedido.getNombreArt());
+			System.out.println("Precio " + pedido.getPrecio());
+			System.out.println("Cantidad " + pedido.getCantidad());
+			System.out.println("total " + pedido.getTotal());
 		}
 
 	}
 
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
+		CrearPedido li = new CrearPedido();
+		li.listarPedido();
+	}
 }

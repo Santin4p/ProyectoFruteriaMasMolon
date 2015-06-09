@@ -35,18 +35,19 @@ public class BuscarPedido extends JPanel {
 	private JTable table;
 	private JComboBox combo;
 	private final JTextField txtnumeroPedido = new JTextField();
-	String[] nombreColumnas = { "Articulo" };
+	String[] nombreColumnas = { "Articulo", "Precio", "Cantidad", "Total" };
 	Object[][] datos = {};
 	private final JTextField txtNombreCliente = new JTextField();
 	private final JTextField textField = new JTextField();
 
 	/**
 	 * Create the panel.
-	 * @throws IOException 
-	 * @throws ClassNotFoundException 
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
 	 */
 	public BuscarPedido() throws ClassNotFoundException, IOException {
-		CrearPedido pedido= new CrearPedido();
+		CrearPedido pedido = new CrearPedido();
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 30, 0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 };
@@ -69,9 +70,9 @@ public class BuscarPedido extends JPanel {
 		gbc_txtnumeroPedido.insets = new Insets(0, 0, 5, 5);
 		gbc_txtnumeroPedido.gridx = 4;
 		gbc_txtnumeroPedido.gridy = 1;
-	
+
 		txtnumeroPedido.setColumns(10);
-		
+
 		JLabel lblFecha = new JLabel("Fecha");
 		lblFecha.setFont(new Font("MV Boli", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
@@ -89,7 +90,7 @@ public class BuscarPedido extends JPanel {
 		textField.setFont(new Font("MV Boli", Font.PLAIN, 12));
 		add(textField, gbc_textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblNombreCliente = new JLabel("Nombre Cliente");
 		lblNombreCliente.setFont(new Font("MV Boli", Font.PLAIN, 12));
 		GridBagConstraints gbc_lblNombreCliente = new GridBagConstraints();
@@ -138,7 +139,7 @@ public class BuscarPedido extends JPanel {
 		columna.getCellEditor().addCellEditorListener(new CellEditorListener() {
 			@Override
 			public void editingStopped(ChangeEvent e) {
-				
+
 			}
 
 			@Override
@@ -147,10 +148,15 @@ public class BuscarPedido extends JPanel {
 			}
 		});
 
+		JTextField propio1 = new JTextField();
+		propio.setEditable(false);
+		TableCellEditor tce1 = new DefaultCellEditor(propio);
+		table.getColumn(table.getColumnName(1)).setCellEditor(tce1);
+		columna.setCellEditor(tce1);
 		columna.getCellEditor().addCellEditorListener(new CellEditorListener() {
 			@Override
 			public void editingStopped(ChangeEvent e) {
-				
+
 			}
 
 			@Override
@@ -158,6 +164,41 @@ public class BuscarPedido extends JPanel {
 				// TODO Auto-generated method stub
 			}
 		});
+
+		JTextField propio2 = new JTextField();
+		propio.setEditable(false);
+		TableCellEditor tce2 = new DefaultCellEditor(propio);
+		table.getColumn(table.getColumnName(2)).setCellEditor(tce2);
+		columna.setCellEditor(tce2);
+		columna.getCellEditor().addCellEditorListener(new CellEditorListener() {
+			@Override
+			public void editingStopped(ChangeEvent e) {
+
+			}
+
+			@Override
+			public void editingCanceled(ChangeEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+
+		JTextField propio4 = new JTextField();
+		propio4.setEditable(false);
+		TableCellEditor tce4 = new DefaultCellEditor(propio4);
+		table.getColumn(table.getColumnName(3)).setCellEditor(tce4);
+		columna.setCellEditor(tce4);
+		columna.getCellEditor().addCellEditorListener(new CellEditorListener() {
+			@Override
+			public void editingStopped(ChangeEvent e) {
+
+			}
+
+			@Override
+			public void editingCanceled(ChangeEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+
 		txtnumeroPedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (txtnumeroPedido.getText().equals("")) {
@@ -166,8 +207,7 @@ public class BuscarPedido extends JPanel {
 							JOptionPane.ERROR_MESSAGE);
 					txtNombreCliente.setText("");
 					textField.setText("");
-				}
-				else {
+				} else {
 					boolean bandera = false;
 
 					do {
@@ -178,20 +218,18 @@ public class BuscarPedido extends JPanel {
 						}
 
 					} while (bandera == false);
-				
-						try {
-							pedido.listarPedido(table,txtnumeroPedido,txtNombreCliente,textField);
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				}
-				
 
-					
+					try {
+						pedido.listarPedido(table, txtnumeroPedido, txtNombreCliente, textField);
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+
 			}
 		});
 		add(txtnumeroPedido, gbc_txtnumeroPedido);
